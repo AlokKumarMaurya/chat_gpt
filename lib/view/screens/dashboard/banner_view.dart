@@ -12,14 +12,16 @@ class BannerView extends StatelessWidget {
       child: Column(
         children: [
       Container(
-        margin: EdgeInsets.symmetric(vertical: 30,horizontal: 10),
+        margin:const EdgeInsets.symmetric(vertical: 30,horizontal: 10),
         alignment: Alignment.center,
         height: 100,
         width: Get.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Theme.of(context).canvasColor,Theme.of(context).primaryColor],begin: Alignment.centerLeft,end: Alignment.centerRight)
+        decoration:const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppConstants.bannerImage)
+          ),
+          //gradient: LinearGradient(colors: [Theme.of(context).canvasColor,Theme.of(context).primaryColor],begin: Alignment.centerLeft,end: Alignment.centerRight)
         ),
-        child: Image.asset(AppConstants.splashImage),
       ) ,   
         ],
       ),

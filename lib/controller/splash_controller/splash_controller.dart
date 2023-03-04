@@ -8,7 +8,7 @@ bool isFirstTime=false;
 
 void startTimer(){
   AppHelperFunction().appPrint(val: "Function started");
-  Future.delayed(const Duration(seconds: 10)).then((value) => Get.toNamed(Routes.homeScreen));
+  Future.delayed(const Duration(seconds: 3)).then((value) => Get.offAllNamed(Routes.homeScreen));
 }
 
 }

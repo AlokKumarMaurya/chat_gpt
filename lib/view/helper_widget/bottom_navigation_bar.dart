@@ -1,14 +1,20 @@
+import 'package:chat_gpt/utils/app_constants.dart';
+import 'package:chat_gpt/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-import '../../utils/helper_function.dart';
 class BottonNavigationBar extends StatelessWidget {
-   BottonNavigationBar({Key? key}) : super(key: key);
+  BottonNavigationBar({Key? key}) : super(key: key);
 
-RxInt index=0.obs;
-   handleTap({required int val}){
-    index.value=val;
+  RxInt index = 0.obs;
+
+  handleTap({required int val}) {
+    if (val == 0) {
+      Get.offNamed(Routes.homeScreen);
+    } else {
+      Get.toNamed(Routes.chatPageUi);
+    }
+    index.value = val;
   }
 
   @override
@@ -22,13 +28,14 @@ RxInt index=0.obs;
           Column(
             children: [
               IconButton(
-                  onPressed: () => handleTap(val: 0)
-                      .showGoodSnackBar(text: "No function yest"),
-                  icon:Obx(()=> Icon(
-                    Icons.home,
-                    color:index.value==0? Theme.of(Get.context!).canvasColor:Theme.of(Get.context!).cardColor,
-                    size: 30,
-                  ))),
+                  onPressed: () => handleTap(val: 0),
+                  icon: Obx(() => Icon(
+                        Icons.home,
+                        color: index.value == 0
+                            ? Theme.of(Get.context!).canvasColor
+                            : Theme.of(Get.context!).cardColor,
+                        size: 30,
+                      ))),
               Text(
                 "Home",
                 style: TextStyle(color: Theme.of(Get.context!).cardColor),
@@ -38,13 +45,16 @@ RxInt index=0.obs;
           Column(
             children: [
               IconButton(
-                  onPressed: () => handleTap(val: 1)
-                      .showGoodSnackBar(text: "No function yest"),
-                  icon: Obx(()=>Icon(
-    Icons.chat,
-    color: index.value==1? Theme.of(Get.context!).canvasColor:Theme.of(Get.context!).cardColor,
-    size: 30,
-    ))),
+                  onPressed: () => handleTap(val: 1),
+                  icon: Obx(() => Image.asset(
+                    height: 30,
+                        width:30,
+                        AppConstants.chatImage,
+                        color: index.value == 1
+                            ? Theme.of(Get.context!).canvasColor
+                            : Theme.of(Get.context!).cardColor,
+                      )
+                  )),
               Text(
                 "Chat",
                 style: TextStyle(color: Theme.of(Get.context!).cardColor),
@@ -53,5 +63,6 @@ RxInt index=0.obs;
           )
         ],
       ),
-    );  }
+    );
+  }
 }

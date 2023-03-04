@@ -1,3 +1,4 @@
+import 'package:chat_gpt/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,11 +43,7 @@ class HomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 15.0),
                       child: IconButton(
-                        icon: Icon(
-                          Icons.bubble_chart_sharp,
-                          color: Theme.of(context).cardColor,
-                          size: 30,
-                        ),
+                        icon: Image.asset(AppConstants.bulbImage,height: 20,),
                         onPressed: () => AppHelperFunction()
                             .showErrorSnackBar(text: "No functionality yet"),
                       ),
