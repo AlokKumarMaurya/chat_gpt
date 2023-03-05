@@ -14,4 +14,12 @@ class SharedPrefrences {
   bool isDarkTheme(){
     return box.read(AppConstants().currentTheme)??false;
   }
+
+  void saveUser(){
+    box.write(AppConstants.saveUser, false);
+  }
+
+  bool getUserFirstTime(){
+    return box.read(AppConstants.saveUser)?? true;
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:chat_gpt/api_client/responseModals/chatResponseModal.dart';
 import 'package:chat_gpt/controller/all_list_controller/all_list_controller.dart';
+import 'package:chat_gpt/controller/firebaseController/firebaseController.dart';
 import 'package:chat_gpt/utils/helper_function.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,8 @@ class ApiClient extends GetConnect {
     var headerr = {
       "Content-Type": "application/json",
       "Authorization":
-          "Bearer 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"
+          //"Bearer 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"
+          "Bearer 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"
     };
 
     if (await Get.put(NetWorkManager().getConnectivityType() )) {
@@ -36,6 +38,7 @@ class ApiClient extends GetConnect {
           ChatResponsemodal modal = ChatResponsemodal.fromJson(response.body);
           String temp=modal.choices[0].text.replaceAll("\n", "");
           Get.find<AllListController>().removeFromList();
+          Get.find<FireBaseController>().writeToFireBase();
           Get.find<AllListController>().addToList(value: {0:temp});
           print("this is the data that we are adding to the list" +temp+   "   8888888");
           return modal;

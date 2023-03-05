@@ -2,6 +2,8 @@ import 'package:chat_gpt/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/firebaseController/firebaseController.dart';
+
 
 class BannerView extends StatelessWidget {
   const BannerView({Key? key}) : super(key: key);

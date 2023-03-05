@@ -1,3 +1,4 @@
+import 'package:chat_gpt/utils/shared_prefrences.dart';
 import 'package:get/get.dart';
 
 import '../../utils/helper_function.dart';
@@ -8,7 +9,12 @@ bool isFirstTime=false;
 
 void startTimer(){
   AppHelperFunction().appPrint(val: "Function started");
-  Future.delayed(const Duration(seconds: 3)).then((value) => Get.offAllNamed(Routes.homeScreen));
+  getIsFirstTime()?null: Future.delayed(const Duration(seconds: 3)).then((value) => Get.offAllNamed(Routes.homeScreen));
 }
+
+bool getIsFirstTime(){
+ return SharedPrefrences().getUserFirstTime();
+}
+
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/networkManager.dart';
+import 'introScreen/intro_ui.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class SplashScreen extends StatelessWidget {
            init: SplashContoller(),
            initState: (val)=>SplashContoller().startTimer(),
            builder: (splashController){
-          return Scaffold(
+          return splashController.getIsFirstTime()?IntoPageUi(): Scaffold(
             backgroundColor: Theme.of(context).primaryColor,
             body: Center(
               child: Image.asset(AppConstants.splashImage,scale: 5,),

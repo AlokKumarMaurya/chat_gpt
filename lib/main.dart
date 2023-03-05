@@ -4,6 +4,7 @@ import 'package:chat_gpt/utils/app_constants.dart';
 import 'package:chat_gpt/utils/initialize_binding.dart';
 import 'package:chat_gpt/utils/routes.dart';
 import 'package:chat_gpt/view/screens/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -12,6 +13,8 @@ import 'controller/splash_controller/splash_controller.dart';
 import 'controller/theme_controller/theme_contoller.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await GetStorage.init();
   runApp(const MyApp());
 }

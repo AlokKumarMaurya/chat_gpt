@@ -1,6 +1,7 @@
 class AppConstants{
   //shared preferences key
   String currentTheme="Theme";
+  static const String saveUser="Is User First Time";
 
 
   //constant value
@@ -28,6 +29,11 @@ static const String settingsImage="assets/images/subs_plan.png";
 static const String shareImage="assets/images/ic_share.png";
 static const String goSubscriptionImage="assets/images/go_subscription.png";
 static const String settingUnpremiumImage="assets/images/img_setting_unpremium.png";
+static const String nextImage="assets/images/intro_next.png";
+static const String introOneImage="assets/images/img_intro_first.png";
+static const String introTwoImage="assets/images/img_intro_second.png";
+static const String introThreeImage="assets/images/img_intro_third.png";
+static const String subscriptionImage="assets/images/img_header_subscription.png";
 
 
 //svg
