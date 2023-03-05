@@ -23,6 +23,6 @@ class Routes{
     GetPage(name: initial, page:(){return const SplashScreen();}),
     GetPage(name: homeScreen, page:(){return const HomeScreen();},binding: InitialScreenBindings()),
     GetPage(name: allPageListView, page:(){return const AllPageListView();}),
-    GetPage(name: chatPageUi, page:(){return const ChatPageUi();}),
+    GetPage(name: chatPageUi, page:(){return const ChatPageUi();},preventDuplicates: true,binding: InitialScreenBindings()),
   ];
 }

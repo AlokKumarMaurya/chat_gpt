@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/all_list_controller/all_list_controller.dart';
+import '../../../utils/routes.dart';
 import '../../helper_widget/listViewListTile.dart';
 
 class AllPageListView extends StatelessWidget {
@@ -32,6 +33,10 @@ class AllPageListView extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context,index){
               return ListViewListTile(
+                onTap: (){
+                  allListController.setControllerValue(value: allListController.currentList[index]);
+                  Get.toNamed(Routes.chatPageUi);
+                },
                 content: allListController.currentList[index],
               );
             })

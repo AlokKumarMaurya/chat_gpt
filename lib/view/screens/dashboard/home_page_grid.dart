@@ -22,7 +22,7 @@ class HomePageGridView extends StatelessWidget {
   final List<String> imagesList = [
     AppConstants.marketingImage,
     AppConstants.businessImage,
-    AppConstants.contnetImage,
+    AppConstants.contentImage,
     AppConstants.webDevImage,
     AppConstants.healthCareImage,
     AppConstants.teacherImage,
@@ -61,9 +61,9 @@ class HomePageGridView extends StatelessWidget {
               Get.toNamed(Routes.allPageListView);
             },
             child: Container(
-              margin: index == 0 || index == 3
+              margin: index == 0 || index == 3 || index == 6
                   ? const EdgeInsets.only(left: 10)
-                  : index == 2 || index == 5
+                  : index == 2 || index == 5 || index == 8
                   ? const EdgeInsets.only(right: 10)
                   : null,
               alignment: Alignment.center,

@@ -1,6 +1,7 @@
 import 'package:chat_gpt/theme/dark_theme.dart';
 import 'package:chat_gpt/theme/light_theme.dart';
 import 'package:chat_gpt/utils/app_constants.dart';
+import 'package:chat_gpt/utils/initialize_binding.dart';
 import 'package:chat_gpt/utils/routes.dart';
 import 'package:chat_gpt/view/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
                         initialRoute: Routes.splashScreen,
                         getPages: Routes.routesList,
                         home: const SplashScreen(),
+                  initialBinding: InitialScreenBindings(),
                       );
               });
         });

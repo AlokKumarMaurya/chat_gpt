@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chat_gpt">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
    <application
-        android:label="chat_gpt"
+        android:label="Chat Gpt"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

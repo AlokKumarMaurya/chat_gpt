@@ -1,6 +1,6 @@
 class AppConstants{
-  //shared prefrences key
-  String curentTheme="Theme";
+  //shared preferences key
+  String currentTheme="Theme";
 
 
   //constant value
@@ -17,14 +17,12 @@ static const String teacherImage="assets/images/ic_cat_teacher.png";
 static const String healthCareImage="assets/images/ic_cat_wellbeing.png";
 static const String chatImage="assets/images/ic_chat_bar.png";
 static const String businessImage="assets/images/business.png";
-static const String contnetImage="assets/images/content.png";
+static const String contentImage="assets/images/content.png";
 static const String educationImage="assets/images/education.png";
 static const String foodImage="assets/images/food.png";
 static const String heartImage="assets/images/ic_heard_select.png";
 static const String webDevImage="assets/images/web_dev.png";
 static const String bulbImage="assets/images/lightbulb.png";
-static const String volumeOnImage="assets/images/volume_on.svg";
-static const String volumeOfImage="assets/images/volume_on.svg";
 static const String restoreImage="assets/images/restore.png";
 static const String settingsImage="assets/images/subs_plan.png";
 static const String shareImage="assets/images/ic_share.png";
@@ -36,5 +34,11 @@ static const String settingUnpremiumImage="assets/images/img_setting_unpremium.p
 static const String ssContactUsImage="assets/images/contactus.svg";
 static const String ssPrivacyPolicyImage="assets/images/privacy_policy.svg";
 static const String ssTermsOfServiceImage="assets/images/term_of_service.svg";
+static const String volumeOnImage="assets/images/volume_on.svg";
+static const String volumeOfImage="assets/images/volume_on.svg";
+
+
+//urls
+static const String chatResponseUrl="https://api.openai.com/v1/completions";
 
 }

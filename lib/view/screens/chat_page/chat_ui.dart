@@ -1,3 +1,4 @@
+import 'package:chat_gpt/controller/all_list_controller/all_list_controller.dart';
 import 'package:chat_gpt/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../utils/app_constants.dart';
 import '../../../utils/routes.dart';
 import 'botton_text_filed.dart';
+import 'chat_list.dart';
 
 class ChatPageUi extends StatelessWidget {
   const ChatPageUi({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class ChatPageUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: ()async{
+        Get.find<AllListController>().setControllerValue(value: "");
         Get.offNamed(Routes.homeScreen);
         return true;
       },
@@ -52,8 +55,10 @@ class ChatPageUi extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Expanded(child: SingleChildScrollView(child: Container()),),
-           const BottomTextField()
+            Expanded(child: SingleChildScrollView(child: SizedBox(
+              height: Get.height/1.3,
+                child: const ChatList())),),
+            const BottomTextField()
           ],
         )
       ),

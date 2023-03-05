@@ -1,12 +1,28 @@
+
+import 'package:chat_gpt/api_client/api_client.dart';
+import 'package:chat_gpt/utils/helper_function.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+
+import '../../api_client/responseModals/chatResponseModal.dart';
 
 class AllListController extends GetxController {
   String _currentTitle = "Empty";
   List<String> _currentList = [];
+  TextEditingController _chatTextEditingController = TextEditingController();
+  //0 means bot //1 means user
+  List<Map<int,String>> _chatList=[{0:"How may I help you today"}];
 
   String get currentTitle => _currentTitle;
 
   List<String> get currentList => _currentList;
+
+  TextEditingController get chatTextEditingController =>
+      _chatTextEditingController;
+
+  List<Map<int,String>> get chatList=>_chatList;
+
+  ScrollController chatListScrollContoller=ScrollController();
 
   Map<String, List<String>> allContentList = {
     "Business": [
@@ -53,9 +69,48 @@ class AllListController extends GetxController {
     setCurrentList();
   }
 
-//"Marketing","Bussiness","Content","web Development","HealthCare","Teachers"
+  void setControllerValue({required String value}) {
+    _chatTextEditingController.text = value;
+  }
 
   setCurrentList() {
     _currentList = allContentList[_currentTitle]!;
   }
+
+  void addToList({required Map<int,String> value}){
+    _chatList.add(value);
+    //getChatResponse();
+    chatTextEditingController.clear();
+    navigateToBottom();
+    update();
+  }
+
+
+  void removeFromList(){
+    _chatList.removeLast();
+    //getChatResponse();
+    //chatTextEditingController.clear();
+    navigateToBottom();
+    update();
+  }
+
+
+  void navigateToBottom(){
+    AppHelperFunction().appPrint(val: "scroll function is called");
+    chatListScrollContoller.animateTo(
+      chatListScrollContoller.position.maxScrollExtent,
+      duration:const Duration(milliseconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+
+  void getChatResponse()async{
+
+    var res=await ApiClient().getChatAnswer(question: chatTextEditingController.text);
+    if(res!=null){
+      ChatResponsemodal modal=res;
+    }
+}
+
 }

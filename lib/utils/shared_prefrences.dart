@@ -7,11 +7,11 @@ class SharedPrefrences {
 
   void saveTheme({required isDarkTheme}){
     if(isDarkTheme){
-      box.write(AppConstants().curentTheme, isDarkTheme);
+      box.write(AppConstants().currentTheme, isDarkTheme);
     }
   }
   
   bool isDarkTheme(){
-    return box.read(AppConstants().curentTheme)??false;
+    return box.read(AppConstants().currentTheme)??false;
   }
 }
