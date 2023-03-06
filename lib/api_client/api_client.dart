@@ -22,26 +22,26 @@ class ApiClient extends GetConnect {
     var headerr = {
       "Content-Type": "application/json",
       "Authorization":
-          //"Bearer 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"
-          "Bearer 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"
+          await Get.find<FireBaseController>().getApiKeyFromFirebase()
+      //"Bearer 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"
+      //"Bearer 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"
     };
 
-    if (await Get.put(NetWorkManager().getConnectivityType() )) {
+    if (await Get.put(NetWorkManager().getConnectivityType())) {
       try {
-        Get.find<AllListController>().addToList(value: {0:""});
+        Get.find<AllListController>().addToList(value: {0: ""});
         var response =
             await post(AppConstants.chatResponseUrl, bodyy, headers: headerr);
-        AppHelperFunction().appPrint(val: response.statusCode.toString());
-        AppHelperFunction().appPrint(val: response.body.toString());
-        print(response.body.toString());
         if (response.statusCode == 200) {
           ChatResponsemodal modal = ChatResponsemodal.fromJson(response.body);
-          String temp=modal.choices[0].text.replaceAll("\n", "");
+          String temp = modal.choices[0].text.replaceAll("\n", "");
           Get.find<AllListController>().removeFromList();
           Get.find<FireBaseController>().writeToFireBase();
-          Get.find<AllListController>().addToList(value: {0:temp});
-          print("this is the data that we are adding to the list" +temp+   "   8888888");
+          Get.find<AllListController>().addToList(value: {0: temp});
           return modal;
+        }else{
+          Get.find<AllListController>().removeFromList();
+          AppHelperFunction().showErrorSnackBar(text: "Some error occurred please try again later");
         }
       } catch (e) {
         AppHelperFunction().appPrint(val: e.toString());
