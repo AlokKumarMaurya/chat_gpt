@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/all_list_controller/all_list_controller.dart';
+import '../../../controller/firebaseController/get_dashboard_list_firebase.dart';
 import '../../../utils/app_constants.dart';
 import '../../../utils/routes.dart';
 
@@ -46,68 +47,78 @@ class HomePageGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          crossAxisSpacing: 15.0,
-          mainAxisSpacing: 15.0,
-          childAspectRatio: 1),
-      delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-          return InkWell(
-            onTap: () {
-              Get.find<AllListController>()
-                  .setCurrentPage(title: nameList[index]);
-              Get.toNamed(Routes.allPageListView);
-            },
-            child: Container(
-              margin: index == 0 || index == 3 || index == 6
-                  ? const EdgeInsets.only(left: 10)
-                  : index == 2 || index == 5 || index == 8
-                  ? const EdgeInsets.only(right: 10)
-                  : null,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Theme
-                      .of(context)
-                      .cardColor
-                      .withOpacity(0.1)),
-              height: 90,
-              width: Get.width / 5,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: colorList[index]
-                    ),
-                    padding: const EdgeInsets.all(13),
-                    child: Image.asset(
-                        imagesList[index],
-                        height: 25,
-                        width: 25
-                    ),
+    return GetBuilder<FirebaseDashBoardListController>(
+      init: FirebaseDashBoardListController(),
+      builder: (firebaseDashBoardListController) {
+        return firebaseDashBoardListController.dashBoardDataMap.isNull? SliverToBoxAdapter(
+          child: Center(child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(color: Theme.of(context).cardColor,),
+          ),),
+        ):SliverGrid(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 15.0,
+              mainAxisSpacing: 15.0,
+              childAspectRatio: 1),
+          delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {
+                  Get.find<AllListController>()
+                      .setCurrentPage(title: nameList[index],index: index);
+                  Get.toNamed(Routes.allPageListView);
+                },
+                child: Container(
+                  margin: index == 0 || index == 3 || index == 6
+                      ? const EdgeInsets.only(left: 10)
+                      : index == 2 || index == 5 || index == 8
+                      ? const EdgeInsets.only(right: 10)
+                      : null,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Theme
+                          .of(context)
+                          .cardColor
+                          .withOpacity(0.1)),
+                  height: 90,
+                  width: Get.width / 5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: colorList[index]
+                        ),
+                        padding: const EdgeInsets.all(13),
+                        child: Image.asset(
+                            imagesList[index],
+                            height: 25,
+                            width: 25
+                        ),
+                      ),
+                    const  SizedBox(height: 3,),
+                      Text(
+                        firebaseDashBoardListController.dashBoardDataMap!.keys.elementAt(index),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Theme
+                                .of(context)
+                                .cardColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400),
+                      )
+                    ],
                   ),
-                const  SizedBox(height: 3,),
-                  Text(
-                    nameList[index],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Theme
-                            .of(context)
-                            .cardColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
-                  )
-                ],
-              ),
-            ),
-          );
-        },
-        childCount: nameList.length,
-      ),
+                ),
+              );
+            },
+            childCount: firebaseDashBoardListController.dashBoardDataMap?.values.length,
+          ),
+        );
+      }
     );
   }
 }

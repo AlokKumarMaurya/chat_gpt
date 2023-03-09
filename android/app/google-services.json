@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "57578659754",
-    "project_id": "chat-gpt-c9f7a",
-    "storage_bucket": "chat-gpt-c9f7a.appspot.com"
+    "project_number": "574682340533",
+    "project_id": "alok-chat-gpt",
+    "storage_bucket": "alok-chat-gpt.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57578659754:android:33459861380e272e3015d3",
+        "mobilesdk_app_id": "1:574682340533:android:8005908503d40c374df2fc",
         "android_client_info": {
-          "package_name": "com.example.chat_gpt"
+          "package_name": "com.alok.chat_gpt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "57578659754-i8lki45fjrl12qcv13vd36qdghdifvu9.apps.googleusercontent.com",
+          "client_id": "574682340533-0dpucuos3lqo1o6q4runqjfpblf3ga85.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCbP_sqwalj1wFLNTWrloggDtocoG4XP6Y"
+          "current_key": "AIzaSyB5-pmRVReH78f8vHd7Az5yhfyMuhQPInU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "57578659754-i8lki45fjrl12qcv13vd36qdghdifvu9.apps.googleusercontent.com",
+              "client_id": "574682340533-0dpucuos3lqo1o6q4runqjfpblf3ga85.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

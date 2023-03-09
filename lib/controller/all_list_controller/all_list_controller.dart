@@ -12,6 +12,7 @@ class AllListController extends GetxController {
   TextEditingController _chatTextEditingController = TextEditingController();
   //0 means bot //1 means user
   List<Map<int,String>> _chatList=[{0:"How may I help you today"}];
+  int _currentIndex=0;
 
   String get currentTitle => _currentTitle;
 
@@ -23,6 +24,8 @@ class AllListController extends GetxController {
   List<Map<int,String>> get chatList=>_chatList;
 
   ScrollController chatListScrollContoller=ScrollController();
+
+  int get currentIndex=>_currentIndex;
 
   Map<String, List<String>> allContentList = {
     "Business": [
@@ -64,7 +67,8 @@ class AllListController extends GetxController {
     ]
   };
 
-  void setCurrentPage({required String title}) {
+  void setCurrentPage({required String title,required int index}) {
+    _currentIndex=index;
     _currentTitle = title;
     setCurrentList();
   }

@@ -1,3 +1,4 @@
+import 'package:chat_gpt/utils/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:platform_device_id/platform_device_id.dart';
@@ -19,11 +20,11 @@ class FireBaseController extends GetxController {
 
     //add to particular document
     //await alok.doc(await getDeviceId()).set({"no of chats": noOfChats + 1});
-
-    if (noOfChats >= 3) {
+   if (noOfChats >= 3) {
       value = true;
     } else {
       await alok.doc(await getDeviceId()).set({"no of chats": noOfChats + 1});
+      value=false;
     }
 
     return value;
@@ -73,3 +74,9 @@ class FireBaseController extends GetxController {
 // element.get("no of chats")   //use for loop to get the details of each document
 
 //get data of particular document
+
+
+
+
+/// for realtime database we need
+/// flutter pub add firebase_database

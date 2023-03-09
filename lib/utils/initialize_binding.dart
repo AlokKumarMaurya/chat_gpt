@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../controller/all_list_controller/all_list_controller.dart';
 import '../controller/dashBoard_controller/home_screen_controller.dart';
 import '../controller/firebaseController/firebaseController.dart';
+import '../controller/firebaseController/get_dashboard_list_firebase.dart';
 import '../controller/networkManager.dart';
 import '../controller/splash_controller/splash_controller.dart';
 import '../controller/theme_controller/theme_contoller.dart';
@@ -15,6 +16,7 @@ class InitialScreenBindings implements Bindings {
     Get.lazyPut(() => HomeScreenContoller());
     Get.lazyPut(() => AllListController());
     Get.put(() => NetWorkManager(),permanent: true);
-    Get.put(() => FireBaseController(),permanent: true);
+    Get.lazyPut(() => FireBaseController(),);
+    Get.lazyPut(() => FirebaseDashBoardListController());
   }
 }

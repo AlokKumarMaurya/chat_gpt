@@ -65,26 +65,27 @@ class BottomTextField extends StatelessWidget {
                           if (allListController
                               .chatTextEditingController.text.isNotEmpty) {
                             if (!allListController.chatList.contains({0: ""})) {
-                                if (3 >=
-                                    await firebaseController.getNumberOfChats(
-                                        deviceId: await firebaseController
-                                            .getDeviceId())) {
-                                  await firebaseController.getNumberOfChats(
+                              if (await firebaseController.getNumberOfChats(
                                       deviceId: await firebaseController
-                                          .getDeviceId());
-                                  ApiClient().getChatAnswer(
-                                      question: allListController
-                                          .chatTextEditingController.text);
-                                  allListController.addToList(value: {
-                                    1: allListController
-                                        .chatTextEditingController.text
-                                  });
-                                } else {
-                                  Get.to(SubscriptionUi(),
-                                      fullscreenDialog: true);
-                                }
+                                          .getDeviceId()) >=
+                                  3) {
+                                Get.to(SubscriptionUi(),
+                                    fullscreenDialog: true);
+                              } else {
+                                await firebaseController.getNumberOfChats(
+                                    deviceId:
+                                        await firebaseController.getDeviceId());
+                                ApiClient().getChatAnswer(
+                                    question: allListController
+                                        .chatTextEditingController.text);
+                                allListController.addToList(value: {
+                                  1: allListController
+                                      .chatTextEditingController.text
+                                });
+                              }
                             } else {
-                              AppHelperFunction().showErrorSnackBar(text: "Wait until the response come");
+                              AppHelperFunction().showErrorSnackBar(
+                                  text: "Wait until the response come");
                             }
                           } else {
                             AppHelperFunction()
